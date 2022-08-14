@@ -2,9 +2,9 @@
 
 module.exports = function (context) {
 
-    let fs = context.requireCordovaModule('fs');
-    let path = context.requireCordovaModule('path');
-    let deferral = context.requireCordovaModule('q').defer();
+    let fs = context.require('fs');
+    let path = context.require('path');
+    let deferral = context.require('q').defer();
 
     // android platform directory
     let platformAndroidDir = path.join(context.opts.projectRoot, 'platforms/android');
