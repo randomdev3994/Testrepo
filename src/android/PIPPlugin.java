@@ -98,6 +98,22 @@ public class PIPPlugin extends CordovaPlugin {
         }             
     }
 */
+	
+	private void initializePip() {
+        if(pictureInPictureParamsBuilder == null){
+			if(hasPIPMode){
+				try {
+					pictureInPictureParamsBuilder = new PictureInPictureParams.Builder();
+				} catch(Exception e){
+					pictureInPictureParamsBuilder = null;
+					String stackTrace = Log.getStackTraceString(e);
+					Log.d(TAG, stackTrace);
+				}
+			} else {
+				Log.d(TAG, "PIP unavailable.");
+			}
+        }
+    }
     
     private void enterPip(Double width, Double height, CallbackContext callbackContext) {
         try{
