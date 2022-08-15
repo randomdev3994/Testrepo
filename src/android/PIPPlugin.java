@@ -20,8 +20,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class PIPPlugin extends CordovaPlugin {
-    private final PictureInPictureParams.Builder pictureInPictureParamsBuilder = new PictureInPictureParams.Builder();
+    //private final PictureInPictureParams.Builder pictureInPictureParamsBuilder = new PictureInPictureParams.Builder();
     private CallbackContext callback = null;
+	private PictureInPictureParams.Builder pictureInPictureParamsBuilder = null;
+	private String TAG = "PIPPlugin";
+	private boolean hasPIPMode = true;
 
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
