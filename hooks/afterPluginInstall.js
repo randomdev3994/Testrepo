@@ -2,13 +2,17 @@
 
 module.exports = function (context) {
 
+    console.log('PLS IT SHOULD WORK');
+
     let fs = require('fs');
     let path = require('path');
     let deferral = require('q').defer();
 
     // android platform directory
     let platformAndroidDir = path.join(context.opts.projectRoot, 'platforms/android');
+    platformAndroidDir += '\\app\\src\\main';
     let androidManifestFile = path.join(platformAndroidDir, 'AndroidManifest.xml');
+    console.log(androidManifestFile);
 
     function changeProperty(inputData, propertyName, targetValue, merge) {
         var hasProperty = (inputData.indexOf(propertyName) > -1);
@@ -24,9 +28,9 @@ module.exports = function (context) {
         }
         return propertyVal;
     }
-
+    console.log('Does FS.sync exist?')
     if (fs.existsSync(androidManifestFile)) {
-
+        console.log('It exists');
         fs.readFile(androidManifestFile, 'UTF-8', function (err, data) {
             if (err) {
                 deferral.reject(err);
