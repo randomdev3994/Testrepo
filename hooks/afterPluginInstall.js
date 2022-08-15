@@ -10,7 +10,7 @@ module.exports = function (context) {
 
     // android platform directory
     let platformAndroidDir = path.join(context.opts.projectRoot, 'platforms/android');
-    platformAndroidDir += '\\app\\src\\main';
+    platformAndroidDir += '//app//src//main';
     let androidManifestFile = path.join(platformAndroidDir, 'AndroidManifest.xml');
     console.log(androidManifestFile);
 
