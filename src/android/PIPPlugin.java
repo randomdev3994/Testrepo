@@ -23,9 +23,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class PIPPlugin extends CordovaPlugin {
-    //private final PictureInPictureParams.Builder pictureInPictureParamsBuilder = new PictureInPictureParams.Builder();
+    private final PictureInPictureParams.Builder pictureInPictureParamsBuilder = new PictureInPictureParams.Builder();
     private CallbackContext callback = null;
-	private PictureInPictureParams.Builder pictureInPictureParamsBuilder = null;
+	//private PictureInPictureParams.Builder pictureInPictureParamsBuilder = null;
 	private String TAG = "PIPPlugin";
 	private boolean hasPIPMode = true;
 
@@ -84,7 +84,7 @@ public class PIPPlugin extends CordovaPlugin {
             callback.sendPluginResult(result);
         }
     }
-/*
+
     private void enterPip(Double width, Double height, CallbackContext callbackContext) {
         try{
             if(width != null && width > 0 && height != null && height > 0){
@@ -103,7 +103,7 @@ public class PIPPlugin extends CordovaPlugin {
             callbackContext.error(stackTrace);
         }             
     }
-*/
+/*
 	
 	private void initializePip() {
         if(pictureInPictureParamsBuilder == null){
@@ -153,7 +153,7 @@ public class PIPPlugin extends CordovaPlugin {
 			Log.d(TAG, "enterPip ERR " + stackTrace);
             callbackContext.error(stackTrace);
         }             
-    }
+    }*/
     
     public void isPip(CallbackContext callbackContext) {
         try{
