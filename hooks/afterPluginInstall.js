@@ -51,7 +51,6 @@ module.exports = function (context) {
                 }
                 deferral.resolve();
             })
-            throw 'Manifest found';
         });
     }
     else {
