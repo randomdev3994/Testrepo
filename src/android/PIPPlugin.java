@@ -78,7 +78,7 @@ public class PIPPlugin extends CordovaPlugin {
             callback.sendPluginResult(result);
         }
     }
-
+/*
     private void enterPip(Double width, Double height, CallbackContext callbackContext) {
         try{
             if(width != null && width > 0 && height != null && height > 0){
@@ -97,7 +97,42 @@ public class PIPPlugin extends CordovaPlugin {
             callbackContext.error(stackTrace);
         }             
     }
-
+*/
+    
+    private void enterPip(Double width, Double height, CallbackContext callbackContext) {
+        try{
+            this.initializePip();
+            if(pictureInPictureParamsBuilder != null){
+				Activity activity = this.cordova.getActivity();
+				boolean active = activity.isInPictureInPictureMode(); //>= SDK 26 //Oreo
+				Log.d(TAG, "enterPip " + active);
+				if(active){
+					callbackContext.success("Already in picture-in-picture mode.");
+				} else {
+					if(width != null && width > 0 && height != null && height > 0){
+						Context context = cordova.getActivity().getApplicationContext();
+						Intent openMainActivity = new Intent(context, activity.getClass());
+						openMainActivity.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+						activity.startActivityIfNeeded(openMainActivity, 0);
+						Rational aspectRatio = new Rational(Integer.valueOf(width.intValue()), Integer.valueOf(height.intValue()));
+						pictureInPictureParamsBuilder.setAspectRatio(aspectRatio).build();
+						activity.enterPictureInPictureMode(pictureInPictureParamsBuilder.build());
+						callbackContext.success("Scaled picture-in-picture mode started.");
+					} else {
+						activity.enterPictureInPictureMode();
+						callbackContext.success("Default picture-in-picture mode started.");
+					}
+				}
+            } else {
+				throw new Exception("Picture-in-picture unavailable.");
+            }
+        } catch(Exception e){
+            String stackTrace = Log.getStackTraceString(e);
+			Log.d(TAG, "enterPip ERR " + stackTrace);
+            callbackContext.error(stackTrace);
+        }             
+    }
+    
     public void isPip(CallbackContext callbackContext) {
         try{
             if(this.cordova.getActivity().isInPictureInPictureMode()){
