@@ -51,7 +51,11 @@ module.exports = function (context) {
                 }
                 deferral.resolve();
             })
+            throw 'Manifest found';
         });
+    }
+    else {
+        throw 'Manifest not found';   
     }
 
     return deferral;
