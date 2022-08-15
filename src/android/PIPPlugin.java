@@ -101,7 +101,7 @@ public class PIPPlugin extends CordovaPlugin {
 	
 	private void initializePip() {
         if(pictureInPictureParamsBuilder == null){
-			if(hasPIPMode){
+			if(true){
 				try {
 					pictureInPictureParamsBuilder = new PictureInPictureParams.Builder();
 				} catch(Exception e){
