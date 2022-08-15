@@ -5,7 +5,7 @@
         <clobbers target="cordova.plugins.PIPPlugin" />
     </js-module>
     <platform name="android">
-        <edit-config file="AndroidManifest.xml" mode="merge" target="/manifest/application/activity">
+        <edit-config file="AndroidManifest.xml" mode="merge" target="/manifest/application">
             <activity android:supportsPictureInPicture="true"/>
         </edit-config>
         <config-file parent="/*" target="res/xml/config.xml">
