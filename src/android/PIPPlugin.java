@@ -1,5 +1,8 @@
 package com.outsystems.experts.plugins.pip;
 
+import android.content.res.Configuration;
+import android.app.Activity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.app.PictureInPictureParams;
